@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% block title %}{{ block.super }} | Your Expenses {% endblock %}
+
 {% block content %}
 <div class="col-md-12 col-sm-12">
 {% if object_list %}

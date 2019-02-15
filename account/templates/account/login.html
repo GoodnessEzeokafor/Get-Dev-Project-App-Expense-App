@@ -1,5 +1,7 @@
 {% extends 'base.html'%}
 {% load crispy_forms_tags %}
+{% block title %}{{ block.super }} | Login {% endblock %}
+
 {% block content%}
 
 <div class="col-md-5 mt-5" style="margin:0 auto">
@@ -7,13 +9,14 @@
     <h3>Sorry you are already logged in</h3>
     {% else %}
         <h3>Login</h3>
-
+        <hr>
         <form action="" method="post">
             {% csrf_token %}
             {{ form|crispy }}
-            <input  type="submit" value="Login">
+            <input type="submit" value="Login" class="btn btn-dark">   
         </form>
-
+        <p class="mt-2">Don't have an account? <a href="{% url 'account:signup'%}"> Sign up</a></p>
+        
     {% endif %}
 </div>
 {% endblock %}

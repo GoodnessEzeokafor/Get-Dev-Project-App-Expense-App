@@ -1,3 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
+<div class="col-md-8">
+    <div class="card mt-5" style="margin:0 auto">
+        <div class="card-header bg-dark text-white">
+          GetDev.co
+        </div>
+        <div class="card-body">
+          <h4 class="card-title">Expense App</h4>
+          <p class="card-text">Signup</p>
+          <p class="card-text">Login</p>
+          <p class="card-text">Create Expense</p>
+          
+          <a href="{% url 'account:signup'%}" class="btn btn-dark">Signup</a>
+        </div>
+      </div>
+</div>
 {% endblock %}

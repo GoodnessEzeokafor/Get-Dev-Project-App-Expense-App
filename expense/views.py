@@ -74,9 +74,17 @@ def expense_add_view(request):
     context['form'] = form
     return render(request, template_name, context)
 
-class ExpenseLisView(LoginRequiredMixin,ListView):
+class ExpenseListView(LoginRequiredMixin,ListView):
     model = Expense
     template_name ='expenses/list.html'
     login_url = reverse_lazy('account:login')
     
 
+    def get_queryset(self):
+        '''
+        Generic Mixin
+        Queries the the expenses by the user{User} 
+        '''
+        qs = super(ExpenseListView, self).get_queryset()
+        # user = TeacherProfile.objects.get(user=self.request.user)
+        return qs.filter(user=self.request.user)
