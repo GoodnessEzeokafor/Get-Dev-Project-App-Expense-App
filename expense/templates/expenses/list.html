@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="col-md-12 col-sm-12">
+{% if object_list %}
+<div class="mt-5">
+    <h3>Your Expenses</h3>
+    <hr>
+</div>
+<table class="table table-responsive mt-0" style="margin:0 auto">   
+        <thead class="thead-dark">
+            <tr>
+            <th scope="col">No</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Date</th>
+            <th scope="col">Reason</th>  
+            <th scope="col">VAT(20%)</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for expense in object_list %}
+            <tr>
+            <th scope="row">{{expense.id}}</th>
+            <td class="expense_value">&#163; {{ expense.value }}</td>
+            <td>{{expense.date_expense_was_made}}</td>
+            <td>{{ expense.reason}}</td>
+            <td class="vat"></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+<div class="header mt-5">
+<h3>No Expense Made</h3>
+<p><a href="{% url 'expense:expense_new'%}" class="btn btn-dark">Add Expense</a></p>
+</div>    
+{% endif %}
+</div>
+<script>
+// var expense = `{{ expense.value }}`
+var new_elem =''
+var expenseElem = document.getElementsByClassName('expense_value')
+var vatElem = document.getElementsByClassName('vat')
+// expenseElem.forEach((element) => {
+//     elem
+// });
+for(var i = 0; i <= expenseElem.length; i++){
+    // var new_elem = expenseElem[i].textContent.split(" ")
+    var new_elem = expenseElem[i].textContent.split(" ")[1]
+    
+    for(var i = 0 ; i < vatElem.length; i++){
+        // alert(vatElem[i])
+
+        var calculateVat = 20/100 * parseFloat(new_elem)  // calculate VAT        
+        // alert(calculateVat)
+
+        vatElem[i].textContent = calculateVat.toFixed(2) 
+
+    }
+
+}
+
+
+// var vatElem = document.getElementsByClassName('vat')
+// var calculateVat = 20/100 * parseFloat(expenseElem)
+
+//     // add the vat element
+//     vatElem.textContent = calculateVat.toFixed(2)
+
+// console.log(calculateVat)
+// document.getElementsByClassName
+
+</script>
+{% endblock %}
+
