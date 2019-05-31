@@ -6,16 +6,7 @@ getdev.co
 A web platform that keeps tracks of the expenses you have made
 Feel Free To Send A Pull Request
 ### Procedure
-#### Step 1
-    $ mkdir unijos_proj
-    $ cd unijos_proj
-    $ pipenv --python 3.5 (depending on your version)
-    $ pipenv shell
-    $ pipenv install django==2.0.6 django-allauth django-crispy-forms pillow
-    $ django-admin startproject mysite .
-    $ python manage.py runserver
-
-### Or Simply clone this repo
+### clone this repo
     $ git clone [repo link]
     $ cd project_name
     $ pipenv shell
